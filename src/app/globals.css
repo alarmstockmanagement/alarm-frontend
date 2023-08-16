@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #445DE3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+    direction: rtl;
+    padding: 25px;
+}
+
+.textRed {
+    color: #F02E24;
+}
+
+.textRedLow {
+    color: #ECC9CD;
+}
+
+.textGreen {
+    color: #25974C;
+}
+
+.textGreenLow {
+    color: #CCE1D4;
+}
+
+.textVilot {
+    color: #445DE3;
+}
+
+.textVilotLow {
+    color: #D0D2EC;
+}
+
+.bgRed {
+    background-color: #F02E24;
+}
+
+.bgRedLow {
+    background-color: #ECC9CD;
+}
+
+.bgGreen {
+    background-color: #25974C;
+}
+
+.bgGreenLow {
+    background-color: #CCE1D4;
+}
+
+.bgVilot {
+    background-color: #445DE3;
+}
+
+.bgVilotLow {
+    background-color: #D0D2EC;
+}
+
+.content {
+    padding: 50px;
+    border-radius: 15px;
+
+}
+
+.filter.content {
+    padding: 0;
+}
+
+.form label {
+    font-size: 20px;
+}
+
+.form input,
+.form select,
+.form select option,
+select option,
+select {
+    width: 100%;
+    box-shadow: 0 0 5px #00000038;
+    padding: 15px;
+    border-radius: 5px;
+    direction: ltr;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+

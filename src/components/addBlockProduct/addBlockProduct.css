@@ -1,0 +1,27 @@
+table {
+    background-color: #373854;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #282945;
+}
+
+tr td {
+
+    padding: 10px 18px;
+    direction: ltr;
+}
+
+thead th {
+    height: 60px;
+    direction: ltr;
+}
+
+tr td button {
+    background-color: #404BD9;
+    border-radius: 3px;
+    padding: 3px 20px;
+}
