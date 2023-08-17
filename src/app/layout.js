@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 
 const inter = Cairo({
   subsets: ['latin'],
-  weight: [ "200", "300", "400", "500", "600", "700", "800"]
+  weight: ["200", "300", "400", "500", "600", "700", "800"]
 })
 
 const metadata = {
@@ -21,7 +21,7 @@ const metadata = {
 }
 
 
-export const BaseUrl = "https://inventory-apis.up.railway.app"
+export const BaseUrl = "https://stock-apis.up.railway.app"
 export default function RootLayout({ children }) {
 
   useEffect(() => {
