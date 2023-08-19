@@ -15,11 +15,6 @@ const inter = Cairo({
   weight: ["200", "300", "400", "500", "600", "700", "800"]
 })
 
-export const metadata = {
-  title: 'ALARM'
-}
-
-
 export const BaseUrl = "https://stock-apis.up.railway.app"
 export default function RootLayout({ children }) {
 
