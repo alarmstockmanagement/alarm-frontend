@@ -12,7 +12,6 @@ import axios from 'axios'
 import { BaseUrl } from './layout'
 import Cookies from 'js-cookie'
 import checkLog from '@/checkLoggin'
-import Head from 'next/head'
 
 
 
@@ -76,10 +75,6 @@ export default function Home() {
   }, [])
 
   return (
-    <>
-    <Head>
-      <title>Home</title>
-    </Head>
     <Layout>
       <section className="home h-[calc(100vh-140px)]">
 
@@ -98,7 +93,5 @@ export default function Home() {
         </div>
       </section>
     </Layout>
-    </>
-
   )
 }
