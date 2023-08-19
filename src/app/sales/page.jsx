@@ -14,6 +14,7 @@ import openDetails from "../../../Atom/openDetails"
 import axios from "axios"
 import Cookies from "js-cookie"
 import checkLog from "@/checkLoggin"
+import Head from "next/head"
 
 export default function Sales() {
 
@@ -54,7 +55,13 @@ export default function Sales() {
     }, [isCreateOpen])
 
     return (
+
+
         <Layout>
+            <Head>
+                <title>Sales</title>
+                <meta property="og:title" content="My page title" key="title" />
+            </Head>
             <div className="head flex">
                 <button onClick={() => setIsCreateOpen(true)} className="bg-primary px-[50px] py-[8px] text-2xl text-[#fff] rounded-[10px] ms-auto">أنشاء مبيعة </button>
             </div>
@@ -76,5 +83,6 @@ export default function Sales() {
             }
 
         </Layout>
+
     )
 }
