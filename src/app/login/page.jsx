@@ -11,6 +11,7 @@ import token from "../../../Atom/accessToken"
 import { useRecoilState } from "recoil"
 import WrongMessage from "../../components/wrongMessage/wrongMessage"
 import ReactLoading from 'react-loading';
+import { BaseUrl } from "../layout"
 
 export default function Login() {
 
@@ -23,21 +24,21 @@ export default function Login() {
     const [accessToken, setToken] = useRecoilState(token)
     const [isLoading, setIsLoading] = useState(false)
     async function login(email, pass) {
-    
 
-        let result = await axios.post('https://inventory-apis.up.railway.app/auth/login/', {
+
+        let result = await axios.post(`${BaseUrl}/auth/login/`, {
             email: email,
             password: pass
         })
             .then(function (response) {
                 Cookies.set("islogged", true, { expires: 900 })
-                Cookies.set("accessToken", response.data.access, { expires: 900})
+                Cookies.set("accessToken", response.data.access, { expires: 900 })
                 Cookies.set("refreshToken", response.data.refresh, { expires: 900 })
                 setToken(response.data.access)
                 window.location.reload()
             })
             .catch(function (error) {
-                
+
                 setIsLoading(false)
                 setError(true)
                 setMessage(error.response.data.message)
@@ -94,7 +95,7 @@ export default function Login() {
 
 
                         </button>
-                     </div>
+                    </div>
                     <div className="img max-[767px]:absolute max-[767px]:opacity-[0.1]">
                         <Image src={loginIMG} alt="signup image"></Image>
                     </div>
