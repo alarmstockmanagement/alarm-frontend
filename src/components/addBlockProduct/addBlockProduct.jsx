@@ -310,7 +310,7 @@ function AddBlockProduct(props) {
                                                 }}></Image>
                                             </td>
                                             <td>
-                                                {product.price} $
+                                                {product.price} SR
                                             </td>
                                             <td>
                                                 {product.stock} units

@@ -144,7 +144,7 @@ export default function Block() {
                                                 <ul>
                                                     <li>{product.name}</li>
                                                     <li>كود المنتج : {product.bar_code}  </li>
-                                                    <li>السعر : {product.price} $</li>
+                                                    <li>السعر : {product.price} SR</li>
                                                 </ul>
                                             </div>
                                         </div>

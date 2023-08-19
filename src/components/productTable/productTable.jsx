@@ -174,7 +174,7 @@ function ProductTable() {
                                                     <td>
                                                         {product.added_at}
                                                     </td>
-                                                    <td>{product.price} $</td>
+                                                    <td>{product.price} SR</td>
                                                     <td>
                                                         {product.stock} units
                                                     </td>

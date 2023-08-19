@@ -209,7 +209,7 @@ function CreateSale() {
                                 <ul className='flex flex-col justify-between'>
                                     <li>{currentProduct.name}</li>
                                     <li>كود المنتج : {currentProduct.bar_code}  </li>
-                                    <li>السعر : {currentProduct.price} $</li>
+                                    <li>السعر : {currentProduct.price} SR</li>
                                     <li className='flex items-center '>الكمية
                                         <div className="counter relative w-[130px] ms-4">
                                             <input ref={quantityInp} type="number" className='text-center h-full w-full bg-secondary text-[#fff] p-[2px] rounded focus-visible:outline-none' defaultValue="1" min="1" />
@@ -264,7 +264,7 @@ function CreateSale() {
                                                 {time.split(",")[1]}
                                             </td>
                                             <td>
-                                                {product.price} $
+                                                {product.price} SR
                                             </td>
                                             <td>
                                                 {saleList[index].quantity} units

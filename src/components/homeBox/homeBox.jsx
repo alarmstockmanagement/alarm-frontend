@@ -85,7 +85,7 @@ function HomeBox(props) {
                 <p className="text-[50px] font-semibold ">
                     {
                         isLoading ? <Skeleton className="rounded-md mx-auto" variant="rectangular" width={100} height={60} /> :
-                            (props.type === "sales" ? ` ${nFormatter(currentData.profits, 1)} $` :
+                            (props.type === "sales" ? ` ${nFormatter(currentData.profits, 1)} SR` :
                                 props.type === "danger-adds" ?
                                     currentData.count
                                 :

@@ -149,7 +149,7 @@ function ConfirmSale(props) {
                 </div>
                 <ul className="px-[50px]">
                     <li className="bg-secondary p-[25px] my-5 text-[#fff] rounded-md text-[20px]">إجمالي الكمية :  {`${getSumQuan()} units`}   </li>
-                    <li className="bg-secondary p-[25px] my-5 text-[#fff] rounded-md text-[20px]">إجمالي السعر : {getSumPrice()} $</li>
+                    <li className="bg-secondary p-[25px] my-5 text-[#fff] rounded-md text-[20px]">إجمالي السعر : {getSumPrice()} SR</li>
                     <button onClick={() => {
                         setIsLoading(true)
                         createReq()

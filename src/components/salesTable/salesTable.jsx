@@ -98,7 +98,7 @@ function SalesTable(props) {
                                             {sale.sold_at.split("T")[1].split(".")[0]}
                                         </td>
                                         <td>
-                                            {sale.total} $
+                                            {sale.total} SR
                                         </td>
                                         <td>
                                             {sale.sold_items.length} units

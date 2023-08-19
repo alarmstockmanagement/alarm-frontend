@@ -12,7 +12,7 @@
 }
 
 .price::before {
-    content: "$";
+    content: "SR";
 }
 
 .quan::before {

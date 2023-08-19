@@ -27,7 +27,7 @@ function HomeBoxList(props) {
                                     data?.map((product) => {
                                         return (
                                             props.type === "sales" ?
-                                                <li key={product.id} className={`flex my-2 justify-between bg${props.secondry} text-[15px] px-2 py-1 rounded-md`}><h4>{product.sold_number}</h4><p>{product.total} $</p></li>
+                                                <li key={product.id} className={`flex my-2 justify-between bg${props.secondry} text-[15px] px-2 py-1 rounded-md`}><h4>{product.sold_number}</h4><p>{product.total} SR</p></li>
                                                 :
 
                                                 <li key={product.id} className={`flex my-2 justify-between bg${props.secondry} text-[15px] px-2 py-1 rounded-md`}><h4>{product.name}</h4><p>{product.stock} units</p></li>

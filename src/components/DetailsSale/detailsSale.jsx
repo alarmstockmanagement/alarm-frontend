@@ -118,7 +118,7 @@ function DetailsSale() {
                                         <ul className='flex flex-col justify-between'>
                                             <li>{item.medicine.name}</li>
                                             <li>كود المنتج : {item.medicine.bar_code}  </li>
-                                            <li>السعر : $ {item.medicine.price}</li>
+                                            <li>السعر : SR {item.medicine.price}</li>
                                             <li className='flex items-center '>الكمية
                                                 <div className="counter relative w-[100px] ms-4">
                                                     <input type="number" className='text-center h-full w-full bg-secondary text-[#fff] p-[2px] rounded focus-visible:outline-none' value={item.quantity} />
