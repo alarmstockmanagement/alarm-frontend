@@ -57,7 +57,7 @@ function AddCate(props) {
 
 
     return (
-        <div className="addProduct bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
+        <div className="cate bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
             <div className="relative content bg-bgPrimary w-[570px] px-[50px]">
 
 

@@ -53,7 +53,7 @@ function ConfirmSale(props) {
     function getSumPrice() {
         let sum = 0
         props.list.map((product, index) => {
-            console.log(product)
+         
             if (props.saleList[index].quantity > 1) {
                 sum += props.saleList[index].quantity * product.price
             } else (
@@ -105,47 +105,49 @@ function ConfirmSale(props) {
                         <SuccessMessage title={successMessage} /> : null
                 }
                 <div className="billDetails my-5 px-[50px]">
-                    <table className="salesTable border w-full bg-[#373854] ">
-                        <thead>
-                            <tr>
-                                <th>تاريخ المبيعة</th>
-                                <th>وقت المبيعة </th>
-                                <th>سعر المنتج</th>
-                                <th>الكمية</th>
-                                <th>المنتج</th>
-                                <th>كود المنتج</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-center">
-                            {
-                                props.list.map((product, index) => {
-                                    return (
+                    <div className=" h-[300px] overflow-auto">
+                        <table className="salesTable border w-full bg-[#373854] ">
+                            <thead>
+                                <tr>
+                                    <th>تاريخ المبيعة</th>
+                                    <th>وقت المبيعة </th>
+                                    <th>سعر المنتج</th>
+                                    <th>الكمية</th>
+                                    <th>المنتج</th>
+                                    <th>كود المنتج</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-center">
+                                {
+                                    props.list.map((product, index) => {
+                                        return (
 
 
-                                        <tr key={index}>
-                                            <td>
-                                                {formatDate(new Date())}
-                                            </td>
-                                            <td>
-                                                {time.split(",")[1]}
-                                            </td>
-                                            <td>
-                                                {product.price} $
-                                            </td>
-                                            <td>
-                                                {props.saleList[index].quantity} units
-                                            </td>
-                                            <td>
-                                                {product.name}
-                                            </td>
-                                            <td>{product.bar_code}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
+                                            <tr key={index}>
+                                                <td>
+                                                    {formatDate(new Date())}
+                                                </td>
+                                                <td>
+                                                    {time.split(",")[1]}
+                                                </td>
+                                                <td>
+                                                    {product.price} $
+                                                </td>
+                                                <td>
+                                                    {props.saleList[index].quantity} units
+                                                </td>
+                                                <td>
+                                                    {product.name}
+                                                </td>
+                                                <td>{product.bar_code}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <ul className="px-[50px]">
                     <li className="bg-secondary p-[25px] my-5 text-[#fff] rounded-md text-[20px]">إجمالي الكمية :  {`${getSumQuan()} units`}   </li>

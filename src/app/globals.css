@@ -115,3 +115,10 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+@media (max-height : 920px){
+
+    .addProduct {
+    align-items: start;
+    overflow: auto;       
+    }
+}

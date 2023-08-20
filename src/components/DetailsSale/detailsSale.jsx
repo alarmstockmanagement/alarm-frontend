@@ -68,7 +68,7 @@ function DetailsSale() {
     },[])
 
     return (
-        <div className="detailsSale z-10 bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
+        <div className="detailsSale z-50 bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
             <div className="relative max-h-[80%] overflow-y-scroll rounded-[15px] py-[50px] bg-bgPrimary w-[1150px] ">
                 <Image onClick={() => { setisOpen(false) }} alt="icon" src={BackIcon} className='cursor-pointer absolute left-[50px] top-[10px]'></Image>
                 <div className='form px-[50px]'>

@@ -32,6 +32,7 @@ function CreateSale() {
     const time = new Date().toLocaleString()
     const [isOpenMed, setIsOpenMed] = useRecoilState(confirmMed)
     const [errorMessage, setErrorMessage] = useState("")
+    const codeInp = useRef(null)
 
 
     function sendConfirm(confirm) {
@@ -164,7 +165,7 @@ function CreateSale() {
 
     return (
 
-        <div className="createSale z-10 bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
+        <div className="createSale z-50 bg-[#5f6076d2] left-0 top-0 absolute w-full h-full flex justify-center items-center">
             <div className="relative content bg-bgPrimary w-[1150px] ">
                 <Image alt='icon' onClick={() => setIsCreateOpen(false)} src={BackIcon} className='cursor-pointer absolute left-[50px] top-[10px]'></Image>
                 <div className=' form px-[50px]'>
@@ -186,7 +187,7 @@ function CreateSale() {
                         </div>
                         <div className="input relative w-full text-left">
                             <label htmlFor="">كود المنتج</label>
-                            <input type="text" className='h-[62px]' autoFocus onKeyDown={(e) => {
+                            <input ref={codeInp} type="text" className='h-[62px]' autoFocus onKeyDown={(e) => {
 
                                 if (e.code == "Enter" || e.code == "NumpadEnter") {
 
@@ -202,7 +203,7 @@ function CreateSale() {
                     currentProduct == null ? null :
                         <div className="showData my-5 flex gap-5 justify-between bg-[#EAEAEA] px-[50px] py-3">
                             <div className="details flex gap-5">
-                                <div className="img h-[168px] w-[187px] ">
+                                <div className="img h-[168px] w-[187px] overflow-hidden">
                                     <Image alt='test-Img' src={`${BaseUrl}${currentProduct.medicine_img}`} width={187} height={"168"}></Image>
 
                                 </div>
@@ -211,7 +212,7 @@ function CreateSale() {
                                     <li>كود المنتج : {currentProduct.bar_code}  </li>
                                     <li>السعر : {currentProduct.price} SR</li>
                                     <li className='flex items-center '>الكمية
-                                        <div className="counter relative w-[130px] ms-4">
+                                        <div className="counter relative w-[130px] h-[34px] ms-4">
                                             <input ref={quantityInp} type="number" className='text-center h-full w-full bg-secondary text-[#fff] p-[2px] rounded focus-visible:outline-none' defaultValue="1" min="1" />
                                             <button className='absolute left-0 bg-[#fff] w-[34px] h-[34px] text-center rounded shadow-lg' onClick={() => quantityInp.current.value = +quantityInp.current.value + 1}>+</button>
                                             <button className='absolute right-0 bg-[#fff] w-[34px] h-[34px] text-center rounded shadow-lg' onClick={() => quantityInp.current.value > 1 ? quantityInp.current.value -= 1 : null}>-</button>
@@ -223,6 +224,7 @@ function CreateSale() {
                             <div className="options flex gap-3 items-end">
                                 <button className='py-3 px-16 h-fit rounded-xl bg-[#404BD9] text-[#fff]' onClick={() => {
                                     checkMed(currentProduct.id)
+                                    codeInp.current.value = ""
                                 }
                                 }>إضافة</button>
                                 <button className='py-3 px-16 h-fit rounded-xl bg-[#D94040] text-[#fff]' onClick={() => setCurrentProduct(null)}>حذف</button>
@@ -231,54 +233,58 @@ function CreateSale() {
                 }
                 <div className="billDetails my-5 px-[50px]">
                     {list.length > 0 ?
-                        <table className="salesTable border w-full bg-[#373854] ">
-                            <thead>
-                                <tr>
+                        <div className="h-[200px] overflow-auto">
 
-                                    <th></th>
-                                    <th>تاريخ المبيعة</th>
-                                    <th>وقت المبيعة </th>
-                                    <th>سعر المنتج</th>
-                                    <th>الكمية</th>
-                                    <th>المنتج</th>
-                                    <th>كود المنتج</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-center">
-                                {
-                                    list?.map((product, index) => {
-                                        return (<tr key={index}>
-                                            <td>
-                                                <Image src={deleteIcon} alt='icon' className='cursor-pointer' onClick={() => {
-                                                    const newList = removeItemAtIndex(list, index);
-                                                    const newSaleList = removeItemAtIndex(saleList, index);
+                            <table className="salesTable border w-full bg-[#373854] ">
+                                <thead>
+                                    <tr>
 
-                                                    setList(newList);
-                                                    setSaleList(newSaleList)
-                                                }}></Image>
-                                            </td>
-                                            <td>
-                                                {date.split("/").reverse().join("-")}
-                                            </td>
-                                            <td>
-                                                {time.split(",")[1]}
-                                            </td>
-                                            <td>
-                                                {product.price} SR
-                                            </td>
-                                            <td>
-                                                {saleList[index].quantity} units
-                                            </td>
-                                            <td>
-                                                {product.name}
-                                            </td>
-                                            <td>{product.bar_code}</td>
-                                        </tr>)
-                                    })
-                                }
+                                        <th></th>
+                                        <th>تاريخ المبيعة</th>
+                                        <th>وقت المبيعة </th>
+                                        <th>سعر المنتج</th>
+                                        <th>الكمية</th>
+                                        <th>المنتج</th>
+                                        <th>كود المنتج</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-center">
+                                    {
+                                        list?.map((product, index) => {
+                                            return (<tr key={index}>
+                                                <td>
+                                                    <Image src={deleteIcon} alt='icon' className='cursor-pointer' onClick={() => {
+                                                        const newList = removeItemAtIndex(list, index);
+                                                        const newSaleList = removeItemAtIndex(saleList, index);
 
-                            </tbody>
-                        </table>
+                                                        setList(newList);
+                                                        setSaleList(newSaleList)
+                                                    }}></Image>
+                                                </td>
+                                                <td>
+                                                    {date.split("/").reverse().join("-")}
+                                                </td>
+                                                <td>
+                                                    {time.split(",")[1]}
+                                                </td>
+                                                <td>
+                                                    {product.price} SR
+                                                </td>
+                                                <td>
+                                                    {saleList[index].quantity} units
+                                                </td>
+                                                <td>
+                                                    {product.name}
+                                                </td>
+                                                <td>{product.bar_code}</td>
+                                            </tr>)
+                                        })
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
                         : null
                     }
 

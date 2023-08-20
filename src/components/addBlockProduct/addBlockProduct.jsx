@@ -115,7 +115,6 @@ function AddBlockProduct(props) {
 
     async function addList() {
 
-        console.log(addBlockArray)
 
         let url
         let data
@@ -159,7 +158,7 @@ function AddBlockProduct(props) {
                 ) {
                     updateList()
                 }
-                console.log(error)
+              
             }
             );
     }
@@ -167,7 +166,7 @@ function AddBlockProduct(props) {
     async function updateList() {
         let url
         let data
-        console.log(addBlockArray)
+      
         if (props.current == true) {
             url = `${BaseUrl}/banlist/update/${JSON.parse(cateInput.current.value).id}/`
             data = {
@@ -202,7 +201,6 @@ function AddBlockProduct(props) {
                     checkLog()
 
                 }
-                console.log(error)
             }
             );
     }
@@ -278,7 +276,13 @@ function AddBlockProduct(props) {
                         <button onClick={() => { checkMedInOldList() }} className='bg-primary text-[#fff] w-[240px]  py-4 rounded-[10px]'> أضف الدواء</button>
                         <div className="input relative text-end flex-1">
                             <label htmlFor="">اضافة دواء جديد</label>
-                            <input type="number" ref={productCode} />
+                            <input type="number" ref={productCode} onKeyDown={(e) => {
+
+                                if (e.code == "Enter" || e.code == "NumpadEnter") {
+
+                                    checkMedInOldList()
+                                }
+                            }} />
                             <Image alt='icon' src={barcodeIcon} className='absolute right-[10px] top-[50%] translate-y-[10%]'></Image>
 
                         </div>
@@ -286,46 +290,48 @@ function AddBlockProduct(props) {
                 </div>
 
                 <div className="billDetails my-5 px-[50px]">
-                    <table className="salesTable text-[16px] border w-full bg-[#373854] ">
-                        <thead>
-                            <th></th>
-                            <th>سعر المنتج</th>
-                            <th> الكمية</th>
-                            <th> اسم المنتج</th>
-                            <th>كود المنتج</th>
-                        </thead>
-                        <tbody className="text-center">
-                            {
-                                blockArray.map((product, index) => {
+                    <div className="h-[250px] overflow-auto rounded-[10px]">
+                        <table className="salesTable text-[16px] border w-full bg-[#373854] ">
+                            <thead>
+                                <th></th>
+                                <th>سعر المنتج</th>
+                                <th> الكمية</th>
+                                <th> اسم المنتج</th>
+                                <th>كود المنتج</th>
+                            </thead>
+                            <tbody className="text-center">
+                                {
+                                    blockArray.map((product, index) => {
 
-                                    return (
-                                        <tr key={index}>
-                                            <td>
-                                                <Image src={deleteIcon} alt='icon' className='cursor-pointer' onClick={() => {
-                                                    const newList = removeItemAtIndex(blockArray, index);
-                                                    const newSaleList = removeItemAtIndex(addBlockArray, index);
+                                        return (
+                                            <tr key={index}>
+                                                <td>
+                                                    <Image src={deleteIcon} alt='icon' className='cursor-pointer' onClick={() => {
+                                                        const newList = removeItemAtIndex(blockArray, index);
+                                                        const newSaleList = removeItemAtIndex(addBlockArray, index);
 
-                                                    setBlockArray(newList);
-                                                    setAddBlockArray(newSaleList)
-                                                }}></Image>
-                                            </td>
-                                            <td>
-                                                {product.price} SR
-                                            </td>
-                                            <td>
-                                                {product.stock} units
-                                            </td>
-                                            <td>
-                                                {product.name}
-                                            </td>
-                                            <td>{product.bar_code}</td>
-                                        </tr>
-                                    )
+                                                        setBlockArray(newList);
+                                                        setAddBlockArray(newSaleList)
+                                                    }}></Image>
+                                                </td>
+                                                <td>
+                                                    {product.price} SR
+                                                </td>
+                                                <td>
+                                                    {product.stock} units
+                                                </td>
+                                                <td>
+                                                    {product.name}
+                                                </td>
+                                                <td>{product.bar_code}</td>
+                                            </tr>
+                                        )
 
-                                })
-                            }
-                        </tbody>
-                    </table>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                     <button onClick={() => addList()} className='bg-primary text-[#fff] w-full py-5 my-5 rounded-[10px]'> إضافة  </button>
                 </div>
             </div>

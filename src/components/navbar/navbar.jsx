@@ -112,8 +112,6 @@ function Navbar() {
         }
     }
 
-    console.log(data)
-
     useEffect(() => {
         getNotifiction()
     }, [notifiSeen])

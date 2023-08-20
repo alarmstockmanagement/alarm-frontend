@@ -5,7 +5,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'inventory-apis.up.railway.app',
+                hostname: 'stock-apis.up.railway.app',
 
             },
         ],

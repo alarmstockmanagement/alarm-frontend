@@ -62,7 +62,6 @@ function HomeBox(props) {
         return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
     }
 
-    console.log(currentData, props.title)
 
     useEffect(() => {
         getData()

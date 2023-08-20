@@ -49,7 +49,6 @@ function AddProduct() {
         });
         const day = date.toLocaleString('default', { day: '2-digit' });
 
-        console.log([year, month, day].join('-'))
 
         return [year, month, day].join('-');
     }
@@ -104,8 +103,6 @@ function AddProduct() {
         formData.append("stock", quanInp.current.value)
         formData.append("stockWarnLimit", limitInp.current.value)
         formData.append("barCode", codeInp.current.value)
-
-        console.log(formatDate(new Date(expireInp.current.value)))
 
         const options = {
             method: 'POST',

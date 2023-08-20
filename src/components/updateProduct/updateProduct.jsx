@@ -23,7 +23,6 @@ import checkLog from '@/checkLoggin'
 
 function UpdateProduct(props) {
 
-    console.log(props)
     const file = useRef(null)
     const [isProductOpen, setIsProductOpen] = useRecoilState(DetailsProductOpen)
     const [isAddOpen, setIsAddOpen] = useRecoilState(categoryOpen)
@@ -39,6 +38,8 @@ function UpdateProduct(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [isEdit, setIsEdit] = useRecoilState(editOpen)
     const [image, setImage] = useState(`${BaseUrl}${props.edit.medicine_img}`)
+    const [isEditImg, setIsEditImg] = useState(false)
+
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -101,7 +102,7 @@ function UpdateProduct(props) {
         formData.append("category", categoryInp.current.value)
         formData.append("prodDate", formatDate(new Date()))
         formData.append("expDate", expireInp.current.value)
-        formData.append("medicineImg", image)
+        formData.append("medicineImg", file.current.files[0] == undefined ? image.slice(33) : file.current.files[0] )
         formData.append("stock", quanInp.current.value)
         formData.append("stockWarnLimit", limitInp.current.value)
         formData.append("barCode", codeInp.current.value)
@@ -129,7 +130,8 @@ function UpdateProduct(props) {
                     checkLog()
 
                 }
-                console.log(error)
+
+
                 setIsLoading(false)
                 toast.error(error.response)
             }
@@ -145,6 +147,7 @@ function UpdateProduct(props) {
                         <div className="img relative">
                             <input type="file" onChange={(e) => {
                                 onImageChange(e)
+                                setIsEditImg(true)
                             }} ref={file} className='absolute w-full h-full opacity-0 cursor-pointer' />
                             <Image alt='icon' src={image} width={390} height={350}></Image>
                         </div>
