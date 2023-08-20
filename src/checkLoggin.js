@@ -8,7 +8,6 @@ export default function checkLog() {
   const today = new Date() // get today's date
   const dayExpire = new Date(today)
   dayExpire.setDate(today.getDate() + 1)
-  console.log(dayExpire.toDateString())
   let teest = dayExpire.toDateString()
 
   async function getNewToken() {
@@ -21,10 +20,13 @@ export default function checkLog() {
         Cookies.set("refreshToken", response.data.refresh, { expires: 900 })
       })
       .catch(function (error) {
-        Cookies.set("islogged", false, { expires: 900 })
-        Cookies.set("accessToken", "", { expires: 900 })
-        Cookies.set("refreshToken", "", { expires: 900 })
-        window.location.reload()
+        if (error.response.status !== 401) {
+
+          Cookies.set("islogged", false, { expires: 900 })
+          Cookies.set("accessToken", "", { expires: 900 })
+          Cookies.set("refreshToken", "", { expires: 900 })
+          window.location.reload()
+        }
       });
 
   }
@@ -38,6 +40,7 @@ export default function checkLog() {
       getNewToken()
     }
   }
+
   if (Cookies.get("accessToken") == undefined ||
     Cookies.get("refreshToken") == undefined
   ) {
