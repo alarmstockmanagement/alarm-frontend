@@ -1,7 +1,6 @@
 'use client'
 
 import { NextResponse } from 'next/server'
-import checkLog from './checkLoggin'
 
 
 export default function middleware(req) {
@@ -12,7 +11,7 @@ export default function middleware(req) {
     let cookie = req.cookies.get('islogged')
 
     if (req.cookies.get("accessToken") == undefined) {
-        req.cookies.set("islogged", false)
+        req.cookies.set("islogged", false )
         req.cookies.set("accessToken", "")
     }
 

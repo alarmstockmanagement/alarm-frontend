@@ -25,7 +25,9 @@ const metadata = {
 export const BaseUrl = "https://stock-apis.up.railway.app"
 export default function RootLayout({ children }) {
 
-
+  useEffect(() => {
+    checkLog()
+  }, [children])
 
   return (
     <html lang="en">
@@ -38,7 +40,6 @@ export default function RootLayout({ children }) {
           <ToastContainer style={{ width: "500px" }} theme="colored" rtl={true} draggable={true} draggablePercent={50} />
           {children}
           {middleware}
-          {checkLog()}
         </body>
       </RecoilRoot>
     </html>
